@@ -26,7 +26,7 @@ def construct_index(directory_path):
   # set chunk size limit
   chunk_size_limit = 600
   
-  os.environ["OPENAI_API_KEY"] = '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'
+  os.environ["OPENAI_API_KEY"] = 
   
   prompt_helper = PromptHelper(max_input_size, num_outputs, max_chunk_overlap, chunk_size_limit=chunk_size_limit)
 
@@ -54,7 +54,7 @@ def ask_ai(text_data):
             return False
                 
         else:
-            AI_response = index.query(query, response_mode="compact")
+            #AI_response = index.query(query, response_mode="compact")
             #add a security ck here against competetor info before showing response
             
             #display(Markdown(f"Response: <b>{AI_response.response}</b>"))
