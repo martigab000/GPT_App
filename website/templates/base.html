@@ -64,7 +64,11 @@
     <div class="output-box">
         {% for input in user.inputs %}
             <li class="list-group-item">
-            {{ input.data}}</li>
+            {{ input.data}}
+            <button type="button" class="close" onClick="deleteText({{ input.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </li>
         {% endfor %}
     </div>
 
@@ -127,6 +131,16 @@
     <script>
         var overlayBox = document.querySelector('.overlay-box');
         var overlayBoxHeight = overlayBox.offsetHeight;
+    </script>
+    <script type="text/javascript">
+        function deleteText(textId) {
+    fetch("/delete-text", {
+      method: "POST",
+      body: JSON.stringify({ textId: textId }),
+    }).then((_res) => {
+      window.location.href = "/";
+    });
+    }
     </script>
 
 {% block javascript %}

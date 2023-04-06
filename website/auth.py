@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
-from .views import ai_text
+from .views import user_text
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db   ##means from __init__.py import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -12,7 +12,7 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        ai_text()
+        user_text()
         email = request.form.get('email')
         password = request.form.get('password')
 
@@ -40,7 +40,7 @@ def logout():
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
-        ai_text()
+        user_text()
         email = request.form.get('email')
         first_name = request.form.get('firstName')
         password1 = request.form.get('password1')

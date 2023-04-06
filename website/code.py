@@ -10,6 +10,11 @@ import requests
 import sys
 import os
 from IPython.display import Markdown, display 
+import logging
+import sys
+
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 def construct_index(directory_path):
   # set maximum input size
@@ -20,7 +25,9 @@ def construct_index(directory_path):
   max_chunk_overlap = 20
   # set chunk size limit
   chunk_size_limit = 600
-
+  
+  os.environ["OPENAI_API_KEY"] = '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'
+  
   prompt_helper = PromptHelper(max_input_size, num_outputs, max_chunk_overlap, chunk_size_limit=chunk_size_limit)
 
   # define LLM
@@ -32,20 +39,26 @@ def construct_index(directory_path):
   
   index.save_to_disk('index.json')
   
+  
   return index
 
-def ask_ai():
+def ask_ai(text_data):
+    construct_index('context_data\Outputs')
     index = GPTSimpleVectorIndex.load_from_disk('index.json')
     while True: 
-        query = input("What do you want to ask? ")
+        query = text_data
+        print(text_data)
+        print(query)
         if text_logic(query) == True:
             print("hi")
+            return False
                 
         else:
             AI_response = index.query(query, response_mode="compact")
             #add a security ck here against competetor info before showing response
-            print(AI_response)
+            
             #display(Markdown(f"Response: <b>{AI_response.response}</b>"))
+            return False
         
         
 def import_docs(q_link):
@@ -96,7 +109,7 @@ def text_logic(query):
     #check the user input questions for key words
     key_word = ["help", "https", "more info"]
     for word in key_word:
-        if  word in query:
+        if word in query:
             if word == 'help':
                 #ask ai
                 print("stop")
@@ -112,8 +125,7 @@ def text_logic(query):
                     else:
                         print("{q_link} is not from an approved doamin")
                         return True #will be removed apon farther logic
-        else:
-            print("missed {word}")   
+    return False   
             
 
 def extact_url(query):
@@ -124,7 +136,3 @@ def extact_url(query):
         
     else:
         return None
-    
-def compile_Info():
-    construct_index("context_data/Outputs")
-    ask_ai()

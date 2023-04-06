@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note, Input
 from . import db
+from .code import ask_ai
 import json
 
 views = Blueprint('views', __name__)
@@ -10,7 +11,7 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    ai_text()
+    user_text()
     if request.method == 'POST': 
         note = request.form.get('note')#Gets the note from the HTML 
         if note:
@@ -26,13 +27,10 @@ def home():
             flash('Please enter some text!', category='error')
 
     return render_template("home.html", user=current_user)
-def ai_text():
+def user_text():
     if request.method == 'POST': 
         #Gets the text from the HTML 
         text = request.form.get('text')
-        print(text)
-        print(current_user)
-        print(current_user.id)
         if text:
             if len(text)<1:
                 flash('Note is too short!', category='error')
@@ -42,6 +40,8 @@ def ai_text():
                     db.session.add(new_text) #adding the note to the database 
                     db.session.commit()
                     flash('Text added!', category='success')
+                    text_data = new_text.data
+                    ask_ai(text_data)
                 else:
                     #new_text = Input(data=text)
                     #db.session.add(new_text)
@@ -62,6 +62,18 @@ def delete_note():
     if note:
         if note.user_id == current_user.id:
             db.session.delete(note)
+            db.session.commit()
+
+    return jsonify({})
+
+@views.route('/delete-text', methods=['POST'])
+def delete_text():  
+    text = json.loads(request.data) # this function expects a JSON from the INDEX.js file 
+    textId = text['textId']
+    text = Input.query.get(textId)
+    if text:
+        if text.user_id == current_user.id:
+            db.session.delete(text)
             db.session.commit()
 
     return jsonify({})

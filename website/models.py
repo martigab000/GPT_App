@@ -9,7 +9,6 @@ class Note(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
     
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
@@ -24,3 +23,11 @@ class Input(db.Model):
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    responses = db.relationship('Response')
+    
+
+class Response(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.String(10000))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    input_id = db.Column(db.Integer, db.ForeignKey('input.id'))
