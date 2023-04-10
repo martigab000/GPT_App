@@ -63,12 +63,14 @@
     </div>
     <div class="output-box">
         {% for input in user.inputs %}
+          {% for response in input.responses %}
             <li class="list-group-item">
-            {{ input.data}}
-            <button type="button" class="close" onClick="deleteText({{ input.id }})">
+            {{ response.data}}
+            <button type="button" class="close" onClick="deleteText({{ response.id }})">
                 <span aria-hidden="true">&times;</span>
             </button>
             </li>
+          {% endfor %}
         {% endfor %}
     </div>
 

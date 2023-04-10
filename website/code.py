@@ -12,6 +12,11 @@ import os
 from IPython.display import Markdown, display 
 import logging
 import sys
+from .models import Input, Response, User, Note
+from flask import Blueprint, render_template, request, flash, jsonify
+from flask_login import login_required, current_user
+from . import db
+import json
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
@@ -26,7 +31,7 @@ def construct_index(directory_path):
   # set chunk size limit
   chunk_size_limit = 600
   
-  os.environ["OPENAI_API_KEY"] = 
+  os.environ["OPENAI_API_KEY"] = "Your key here"
   
   prompt_helper = PromptHelper(max_input_size, num_outputs, max_chunk_overlap, chunk_size_limit=chunk_size_limit)
 
@@ -42,23 +47,41 @@ def construct_index(directory_path):
   
   return index
 
-def ask_ai(text_data):
-    construct_index('context_data\Outputs')
-    index = GPTSimpleVectorIndex.load_from_disk('index.json')
+def ask_ai(text_data, text_id):
+    #constructs new index json to use
+    
+    #index = GPTSimpleVectorIndex.load_from_disk('index.json')
     while True: 
         query = text_data
-        print(text_data)
-        print(query)
         if text_logic(query) == True:
             print("hi")
             return False
                 
         else:
+            AI_response = "temp"
             #AI_response = index.query(query, response_mode="compact")
-            #add a security ck here against competetor info before showing response
             
-            #display(Markdown(f"Response: <b>{AI_response.response}</b>"))
-            return False
+            #add a security ck here against competetor info before showing response
+            if AI_response:
+                print(AI_response)
+                if len(AI_response)<1:
+                    print('Note is too short!', category='error')
+                else:
+                    if current_user.is_authenticated:
+                        new_response = Response(data=AI_response, input_id=text_id)  #providing the schema for the response 
+                        db.session.add(new_response) #adding the response to the database 
+                        db.session.commit()
+                        #flash('Text added!', category='success')
+                    else:
+                        #new_text = Input(data=text)
+                        #db.session.add(new_text)
+                        #db.session.commit()
+                        flash('Text added to temp cache!', category='success')
+                #display(Markdown(f"Response: <b>{AI_response.response}</b>"))
+            if not AI_response:
+                flash('Please enter some text!', category='error')
+                return False
+        return jsonify({})
         
         
 def import_docs(q_link):
@@ -121,9 +144,10 @@ def text_logic(query):
                     q_link = match.group(1)
                     if domain_ck(q_link) == True:
                         import_docs(q_link)
+                        construct_index('context_data\Outputs')
                         return True
                     else:
-                        print("{q_link} is not from an approved doamin")
+                        print(f"{q_link} is not from an approved doamin")
                         return True #will be removed apon farther logic
     return False   
             
@@ -136,3 +160,57 @@ def extact_url(query):
         
     else:
         return None
+    
+    
+def check_db(text):
+    #cleans up database
+    delete_temp()
+    #pulls all input ids and corrasponding data
+    input_data = db.session.query(Input.id, Input.data)
+    for input in input_data:
+        #when it finds a match for the input it pulls the response for the input
+        if input.data == text:
+            response = Response.query.get(input.id)
+            response = response.data
+            return response
+    return None
+    
+     
+def delete_null():
+    #pulls all responses with null inputs (does not have a connecting question or input)  
+    obj1_id = Response.query.filter(Response.input_id==None).all()
+    print(obj1_id)
+    for obj in obj1_id:
+        id_res = obj.id
+        if id_res == None:
+            id_inp = Input.query.get(id_res)
+            print(id_inp)
+    
+def delete_temp():
+    #get all input ids
+    pull_i = db.session.query(Input.id).all()
+    #get all response input_ids
+    pull_r = db.session.query(Response.input_id).all()
+    #pulling null input_id and associating id to delete
+    pull_null = db.session.query(Response.id, Response.input_id).all()
+    
+    input_set = set(pull_i)
+    response_set = set(pull_r)
+    
+    matches = input_set.intersection(response_set)
+    
+    #delete input that has no resonse in db
+    for inp_id in pull_i:
+        if inp_id not in matches:
+            inp_id = Input.query.get(inp_id)
+            db.session.delete(inp_id)
+            db.session.commit()
+    #check and delete response data that has no input    
+    for res_id in pull_null:
+        res_inp_id = res_id.input_id
+        if res_inp_id == None:
+            #after comfirming null is in input_id get the data and delete
+            res_id = Response.query.get(res_id.id)
+            db.session.delete(res_id)
+            db.session.commit()
+    

@@ -1,0 +1,267 @@
+Block 1 Show all type(s) of health insurance applicable to this claim by checking the appropriate box(es).
+
+Block 1a INSURED’S ID NUMBER – Enter the patient’s Medicare number if applicable. The patient’s (recipient’s) 11-digit Maryland Medical Assistance number is required in Block 9a. – Situational.
+
+Block 2 PATIENT’S NAME (Last Name, First Name, Middle Initial) – Enter the patient’s (recipient’s) name as it appearBlock 24C EMG – Leave Blank.
+
+
+Block 3 PATIENT’S BIRTH DATE/SEX – Enter the patient’s (recipient’s) date of birth and sex. – Optional.
+
+Block 4 INSURED’S NAME (Last Name, First Name, Middle Initial) – Enter the name of the person in whose name the third party coverage is listed, only when applicable. – Optional.
+
+Block 5 PATIENT’S ADDRESS – Enter the patient’s (recipient’s) complete mailing address with zip code and telephone number. – Optional.
+
+Block 6 PATIENT’S RELATIONSHIP TO INSURED – Enter the appropriate relationship only when there is third party health insurance besides Medicare and Medicaid. – Optional.
+
+Block 7 INSURED’S ADDRESS – When there is third party health insurance coverage besides Medicare and Medicaid, enter the insured’s address and telephone number. – Optional.
+
+Block 8 RESERVED FOR NUCC USE – No entry required.
+
+Block 9 OTHER INSURED’S NAME – No entry required.
+
+Block 9a OTHER INSURED’S POLICY OR GROUP NUMBER – Enter the patient’s (recipient’s) 11-digit Maryland Medical Assistance number exactly as it appears on the MA card. The MA number must appear in this Block regardless of whether or not a recipient has other insurance. Medical Assistance eligibility should be verified on each date of service by calling EVS. EVS is operational 24 hours a day, 365 days a year at the following number: 1-866-710-1447- Required
+
+Block 9b RESERVED FOR NUCC USE – No entry required.
+
+Block 9c RESERVED FOR NUCC USE – No entry required.
+
+Block 9d INSURANCE PLAN OR PROGRAM NAME – Enter the insured’s group name and group number only when there is third party health insurance coverage besides Medicare and Medicaid. – Optional.
+
+Block 10a IS PATIENT’S CONDITION RELATED TO - Check “Yes” or “No” to indicate whether employment, auto liability, or other accident involvement applies to one or more of the services described in Item 24, if this information is known. If not known, leave blank. – Optional.
+
+Block 10d CLAIM CODES – When billing for abortions or abortion related service, enter the appropriate two-alpha character (AA-AH) condition code from the table below. This field should ONLY BE USED for abortions and abortion related services, otherwise leave blank.
+
+AA(a) Abortion Performed due to Rape
+Code indicates abortion performed due to a rape.
+AB(a) Abortion Performed due to Incest Code indicates abortion performed due to an incident of incest.
+AC(a) Abortion Performed due to Serious Fetal Genetic Defect, Deformity, or Abnormality
+Code indicates abortion performed due to a genetic defect, a deformity, or abnormality to the fetus.
+AD(a) Abortion Performed due to a Life Endangering Physical Condition
+Code indicates abortion performed due to a life endangering physical condition caused by, arising from, or exacerbated by, the pregnancy itself.
+AE(a) Abortion Performed due to Physical Health of Mother that is not Life Endangering
+Code indicates abortion performed due to physical health of mother that is not life endangering.
+AF(a) Abortion Performed due to Emotional/Psychological Health of the Mother
+Code indicates abortion performed due to emotional/psychological health of the mother.
+AG(b) Abortion Performed due to Social or Economic Reasons
+Code indicates abortion performed due to social or economic reasons.
+AH(b) Elective Abortion
+Elective abortion.
+
+(a) CMS1500 claims reporting abortion codes AA-AF are covered by the Medicaid Program and do not require attachment of the DHMH 521 form. These claims may be billed electronically to Maryland Medicaid for payment. The DHMH 521-Certification for Abortion form must be completed and kept in the patient’s Medical Record.
+(b) CMS1500 claims reporting abortion condition code AG and AH are not
+covered by the Medicaid Program.
+
+
+Block 11 INSURED’S POLICY GROUP OR FECA NUMBER – If the recipient has other third party health insurance and the claim has been rejected by that insurance, enter the appropriate rejection code listed below: For information regarding recipient’s coverage, contact Third Party Liability Unit at 410-767-1765. – Required
+
+CODE REJECTION REASONS
+K Services Not Covered
+L Coverage Lapsed
+M Coverage Not in Effect on Service Date
+N Individual Not Covered
+Q Claim Not Filed Timely (Requires documentation, e.g., a copy of rejection from the insurance company.)
+R No Response from Carrier Within 120 Days of Claim Submission (Requires documentation e.g., a statement indicating a claim submission but no response.)
+S Other Rejection Reason Not Defined Above (Requires documentation, e.g., a statement on the claim indicating that payment was applied to the deductible.)
+
+
+Block 11a INSURED’S DATE OF BIRTH – No entry required.
+
+Block 11b OTHER CLAIM ID – No entry required.
+
+Block 11c INSURANCE PLAN OR PROGRAM NAME – No entry required.
+
+Block 11d IS THERE ANOTHER BENEFIT PLAN? - No entry required.
+
+Block 12 PATIENT’S OR AUTHORIZED PERSON’S SIGNATURE – No entry required.
+
+Block 13 INSURED’S OR AUTHORIZED PERSON’S SIGNATURE – No entry required.
+
+Block 14 DATE OF CURRENT ILLNESS, INJURY, PREGNANCY – No entry required.
+
+Block 15 OTHER DATE – No entry required.
+
+Block 16 DATES PATIENT UNABLE TO WORK IN CURRENT OCCUPATION – No entry required.
+
+Block 17 NAME OF REFERRING PHYSICIAN OR OTHER SOURCE –
+Note: Completion of 17-17b is only required for Lab and Other Diagnostic Services.
+Completion is optional if a valid Medical Assistance individual practitioner identification number is entered in Block #17a. To complete, enter the full name of the ordering practitioner. Do not submit an invoice unless there is an order on file that verifies the identity of the ordering practitioner. – Situational
+
+Block 17a (gray ID shaded area)  NUMBER OF REFERRING PHYSICIAN – Enter the ID Qualifier
+–
+1D (Medicaid Provider Number) followed by the provider’s 9-digit Medicaid Provider Number. – Required
+
+Block 17b Enter the NPI of the referring, ordering, or supervising provider listed in Block 17. – Required
+
+Block 18 HOSPITALIZATION DATES RELATED TO CURRENT SERVICES – No entry required.
+
+Block 19 ADDITIONAL CLAIM INFORMATION – No entry required
+
+Block 20 OUTSIDE LAB – Optional
+
+21 DIAGNOSIS OR NATURE OF THE ILLNESS OR INJURY - Enter the applicable ICD indicator to identify which version of ICD codes is being reported. Enter the indicator between the vertical, dotted lines in the upper right-hand portion of the field.
+
+9 ICD-9-CM
+0 ICD-10-CM
+
+Enter the 3-5 alpha/numeric character code from the ICD-9 related to the procedures, services, or supplies listed in Block #24e. List the primary diagnosis on Line A, with any subsequent codes to be entered on Lines B thru H (the highest level of specificity in priority order). Additional diagnoses are optional and may be listed on Lines I thru L. – Required
+
+NOTE: Effective April 1, 2014 Medical Assistance (MA) will only accept the revised CMS-1500 form (02-12) version with ICD-9 codes. Do not report ICD-10 codes for claims with dates of service prior to October 1, 2014. The Program will accept either ICD-9 or ICD-10 codes depending upon the dates of service on the revised form. REMINDER: ICD-9 and ICD-10 codes cannot be reported on the same claim form.
+
+Block 22 MEDICAID RESUBMISSION – No entry required.
+
+Block 23 PRIOR AUTHORIZATION NUMBER – For those services that require preauthorization, a preauthorization number must be obtained and entered in this Block. – Required
+
+Block 24 A-G (gray shaded area) NATIONAL DRUG CODE (NDC) – Report the NDC/quantity when billing for drugs using the J-code HCPCS. Allow for the entry of 61 characters from the beginning of 24A to the end of 24G. Begin by entering the qualifier N4 and then the 11-digit NDC number. It may be necessary to pad NDC numbers with left-adjusted zeroes in order to report eleven digits (5-4-2). Without skipping a space or adding hyphens, enter the unit of measurement qualifier followed by the numeric quantity administered to the patient. Below are the measurement qualifiers when reporting NDC units:
+
+Measurement Qualifiers
+F2 International Unit
+GR Gram
+ML Milliliter
+UN Units ( EA/Each)
+ME Milligram
+
+
+
+
+More than one NDC can be reported in the shaded lines of Box 24. Skip three spaces after the first NDC/Quantity has been reported and enter the next NDC qualifier, NDC number, unit qualifier and quantity. This may be necessary when multiple vials of the same drug are administered with different dosages and NDC’s. – Required
+
+NOTE: These instructions detail only those data elements for Medical Assistance (MA) paper claim billing. For electronic billing, please refer to the Maryland Medicaid 837-P Electronic Companion Guide which can be found on our website:
+dhmh.maryland.gov/hipaa/SitePages/transandcodesets.aspx
+
+
+Block 24A DATE(S) OF SERVICE – Enter each separate date of service as a 6-digit numeric date (e.g. June 1, 2005 would be 06/01/05) under the FROM heading. Leave the space under the TO heading blank. Each date of service on which a service was rendered must be listed on a separate line. Ranges of dates are not accepted on this form. – Required
+
+Block 24B PLACE OF SERVICE – For each date of service, enter the appropriate 2-digit place of service code listed below to describe the site. – Required
+
+Code Location 
+03 School 42 Ambulance – Air or Water
+11 Office 50 Federally Qualified Health Ctr.
+12 Patient’s Residence 51 Inpatient Psychiatric Facility
+20 Urgent Care 52 Psychiatric Facility Partial Hospitalization
+21 Inpatient Hospital 53 Community Mental Health Ctr.
+22 Outpatient Hospital 56 Psychiatric Residential Treatment Ctr.
+23 Emergency Room – Hospital 57 Non-Residential Substance Abuse Facility
+24 Ambulatory Surgical Ctr. 61 Comprehensive Inpatient Rehabilitation Ctr.
+25 Birthing Ctr 62 Comprehensive Outpatient Rehab. Ctr
+26 Military Treatment Ctr 65 End-Stage Renal Disease Treatment Facility
+31 Skilled Nursing Facility 71 State or Local Public Health Clinic
+32 Nursing Home 72 Rural Health Clinic
+33 Custodial Care 81 Independent Laboratory
+34 Hospice 99 Other Unlisted Facility
+41 Ambulance – Land
+
+Block 24C EMG – Leave Blank.
+
+Block 24D PROCEDURES, SERVICES OR SUPPLIES – Enter the five-character procedure code that describes the service provided and two-character modifier
+
+Block 24E DIAGNOSIS POINTER – Enter a single or combination of diagnosis items (A thru H) from Block #21 above for each line on the invoice. – Required
+
+NOTE: The Program only recognizes up to eight (8) pointers A-H.
+
+Block 24F CHARGES – Enter the usual and customary charges. Do not enter the Maryland Medicaid maximum fee unless that is your usual and customary charge. If there is more then one unit of service on a line, the charge for that line should be the total of all units. – Required
+
+Block 24G DAYS OR UNITS – Enter the total number of units of service for each procedure. The number of units must be for a single visit or day. Multiple, identical services rendered on different days should be billed on separate lines. – Required
+
+NOTE: Multiple, identical services for medical, radiological, or pathological services, within the CPT code range of 70000-89999, rendered on the same day, must be combined and entered on one line.
+
+Block 24H EPSDT FAMILY PLAN – Leave Blank.
+
+Block 24I ID. QUAL. – Enter the ID Qualifier 1D (Medicaid Provider Number) –Required
+NOTE: This two-digit qualifier identifies the non-NPI number followed by the ID number. When required to indicate the provider’s 9-digit MA provider number, the ID Qualifier 1D must precede this number.
+
+Block 24J (gray RENDERING PROVIDER ID # – Enter the 9-digit MA provider number shaded area) of the practitioner rendering the service. In some instances, the rendering number may be the same as the payee provider number in Block #33. Enter the rendering provider’s NPI in the unshaded area. – Required
+
+Block 25 FEDERAL TAX ID NUMBER – Optional.
+
+Block 26 PATIENT’S ACCOUNT NUMBER – An alphabetic, alpha-numeric, or numeric patient account identifier (up to 13 characters) used by the provider’s office can be entered. If recipient’s MA number is incorrect, this number will be recorded on the Remittance Advice. – Optional.
+
+Block 27 ACCEPT ASSIGNMENT? – For payment of Medicare coinsurance and/or deductibles, this Block must be checked “Yes”. Providers agree to accept Medicare and/or Medicaid assignment as a condition of participation. – Required
+
+NOTE: Regulations state that providers shall accept payment by the Program as payment in full for covered services rendered and make no additional charge to any recipient for covered services.
+
+Block 28 TOTAL CHARGE – Enter the sum of the charges shown on all lines of Block #24F of the invoice. – Required
+
+Block 29 AMOUNT PAID – Enter the amount of any collections received from any third party payer, EXCEPT Medicare. If the recipient has third party insurance and the claim has been rejected, the appropriate rejection code shall be placed in Block # 11. – Situational
+
+NOTE: The Program does not consider Medicare as a third party payer.
+
+Block 30 RESERVED FOR NUCC USE – No entry required.
+
+Block 31 SIGNATURE OF PHYSICIAN OR SUPPLIER INCLUDING DEGREE OR CREDENTIALS – Optional.
+
+NOTE: The date of submission must be entered here in order for the claim to be reimbursed.
+
+Block 32 SERVICE FACILITY LOCATION INFORMATION – Complete only if billing for medical laboratory services referred to another laboratory or the facility where trauma services were rendered. Enter the name and address of facility. – Situational
+
+Block 32a NPI – Enter facility’s NPI number. – Required
+
+Block 32b (gray shaded area) Enter the ID Qualifier 1D (Medicaid Provider Number) followed by the  facility’s 9-digit Maryland Medicaid provider number. – Required
+
+NOTE: The Program will not pay a referring laboratory for medical laboratory services referred to a reference laboratory that is not enrolled. The referring laboratory also agrees not to bill the recipient for medical laboratory services referred to a nonparticipating reference laboratory.
+
+Block 33 BILLING PROVIDER INFO & PH# - Enter the name, complete street address, city, state, and zip code of the provider. This should be the address to which claims may be returned. – Required
+
+Block 33a NPI - Enter the NPI number of the billing provider in Block # 33. Errors or omissions of this number will result in non-payment of claims. – Required
+
+Block 33b (gray Enter the ID Qualifier 1D (Medicaid Provider Number) followed by the
+shaded area) 9-digit MA provider number of the provider in Block #33. Errors or omissions of this number will result in non-payment of claims. – Required
+
+NOTE: It is the provider’s responsibility to promptly report all changes of name, pay to address, correspondence address, practice locations, tax identification number, or certification to the Provider Enrollment Unit at 410-767-5340.
+
+
+
+Claim Completion CMS 1500 Quick Guide
+
+Prior Authorization Number: Enter the nine-digit Medicaid authorization number for services requiring authorization. Refer to the policy manual for specific requirements. Following are some of the services that require authorization:
+
+• Elective inpatient services
+• Out-of-state ambulance transports
+• Select medical equipment and supplies
+• Select prosthetic and orthotic services
+• Select vision services
+• Transplant services
+• Other services as described in the provider policy manual or the Medicaid Databases. Clinical Laboratory Services:
+Enter the CLIA number here when billing for clinical lab services. The CLIA number is a 10-digit number with "D" in the third position
+
+Mandatory: Item is required for all claims. If the item is left blank, the claim cannot be processed. Conditional: Item is required if applicable. Your claim may not be processed if blank.
+
+Item Status Information
+
+1a Mandatory Enter the patient’s 8-digit Medicaid ID number.
+2 Mandatory Enter the patient’s last name, first name, middle initial, if any.
+3 Mandatory Enter the patient’s 8-digit birth date (MMDDCCYY) and sex.
+4 Conditional, Mandatory if the patient has insurance primary to Medicaid.
+6 Conditional, If item 4 is complete, check the appropriate box.
+7 Conditional Complete if items 4 and 11 are completed.
+9 Conditional, Mandatory if item 11d. is YES.
+9a Conditional Enter second insurance policy or group number for policyholder in item 9.
+9b Conditional Enter date of birth (MMDDCCYY) and sex for policyholder in item 9.
+9c Conditional Enter employer or school name for policyholder in item 9.
+9d Conditional Enter insurance plan name or program name for policyholder in item 9.
+10a Mandatory Check YES or NO if condition is employment related.
+10b Mandatory Check YES or NO if condition is related to an auto accident. If YES, indicate the state postal code.
+10c Mandatory Check YES or NO if condition is related to accident other than auto.
+11 Conditional Mandatory if patient has insurance primary to Medicaid. Enter primary insurance policy group number.
+11a Conditional Enter the date of birth (MMDDCCYY) and sex for policyholder in item 4.
+11b Conditional Enter the employer’s name or school for policyholder in item 4.
+11c Conditional Enter the insurance plan or program name for policyholder in item 4.
+11d Conditional Check YES if appropriate and complete items 9-9d.
+14 Conditional, If item 10b or 10c is YES, date of accident must be reported.
+17 Conditional Enter the referring/ordering physician’s name as required.
+17a Conditional Enter the 9-digit Medicaid provider ID# of the provider in item 17.
+17b Mandatory Enter NPI#
+18 Conditional Report the admit & discharge dates for services during an inpatient hospital stay.
+19 Conditional Enter documentation or remarks as required.
+21 Mandatory Enter the ICD-9-CM diagnosis code(s) that identify the reason for the service.
+22 Conditional Resubmit code 7 & the last paid 10-digit CRN is mandatory to replace a previously paid claim. Resubmit code 8 & the last paid 10-digit CRN is mandatory to void/cancel a previously paid claim.
+23 Conditional Enter nine-digit Medicaid authorization number or ten-digit CLIA number as appropriate.
+24A Mandatory Enter the eight-digit (MMDDCCYY) ‘from’ and ‘to’ date for each service.
+24B Mandatory Enter the appropriate two-digit place of service code.
+24C Mandatory Enter the EMG code Y it an emergency or a N if not an emergency
+24D Mandatory Enter code and modifier (if appropriate) for the procedure, service or supply rendered.
+24E Mandatory Enter the reference number(s) from item 21 that relates to the procedure/service. Report the primary diagnosis reference number first.
+24F Mandatory Enter your charge without decimals, commas, or dollar signs.
+24G Mandatory Enter the number of units.
+24H EPSDT Medicaid does not use.
+24I Conditional ID Qualifier use ID if reflecting the legacy provider ID#
+24J Mandatory Enter Medical Director’s NPI#
