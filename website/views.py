@@ -56,7 +56,7 @@ def user_text():
             #flash('Please enter some text!', category='error')
 
     return jsonify({})
-
+#@views.route('/anything', methods=['GET'] )
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():  

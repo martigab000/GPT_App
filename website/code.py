@@ -10,16 +10,12 @@ import requests
 import sys
 import os
 from IPython.display import Markdown, display 
-import logging
 import sys
 from .models import Input, Response, User, Note
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from . import db
-import json
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 def construct_index(directory_path):
   # set maximum input size
@@ -31,7 +27,7 @@ def construct_index(directory_path):
   # set chunk size limit
   chunk_size_limit = 600
   
-  os.environ["OPENAI_API_KEY"] = "Your key here"
+  
   
   prompt_helper = PromptHelper(max_input_size, num_outputs, max_chunk_overlap, chunk_size_limit=chunk_size_limit)
 
@@ -49,8 +45,9 @@ def construct_index(directory_path):
 
 def ask_ai(text_data, text_id):
     #constructs new index json to use
-    
-    #index = GPTSimpleVectorIndex.load_from_disk('index.json')
+    os.environ["OPENAI_API_KEY"] = ""
+    save=r"C:\Users\gabriel.martin\Documents\GetLab\GPT_App\index.json"
+    index = GPTSimpleVectorIndex.load_from_disk(save_path=save)
     while True: 
         query = text_data
         if text_logic(query) == True:
@@ -58,28 +55,21 @@ def ask_ai(text_data, text_id):
             return False
                 
         else:
-            AI_response = "temp"
-            #AI_response = index.query(query, response_mode="compact")
-            
+            AI_response = index.query(query, response_mode="compact")
+            response = str(AI_response)#convert response to string
             #add a security ck here against competetor info before showing response
             if AI_response:
-                print(AI_response)
-                if len(AI_response)<1:
-                    print('Note is too short!', category='error')
-                else:
-                    if current_user.is_authenticated:
-                        new_response = Response(data=AI_response, input_id=text_id)  #providing the schema for the response 
-                        db.session.add(new_response) #adding the response to the database 
-                        db.session.commit()
-                        #flash('Text added!', category='success')
-                    else:
-                        #new_text = Input(data=text)
-                        #db.session.add(new_text)
-                        #db.session.commit()
-                        flash('Text added to temp cache!', category='success')
-                #display(Markdown(f"Response: <b>{AI_response.response}</b>"))
+                if current_user.is_authenticated:
+                    new_response = Response(data=response, input_id=text_id)  #providing the schema for the response 
+                    db.session.add(new_response) #adding the response to the database 
+                    db.session.commit()
+                else: #location for temp user
+                    #new_text = Input(data=text)
+                    #db.session.add(new_text)
+                    #db.session.commit()
+                    flash('Text added to temp cache!', category='success')
             if not AI_response:
-                flash('Please enter some text!', category='error')
+                flash('Cant answer your question', category='error')
                 return False
         return jsonify({})
         
