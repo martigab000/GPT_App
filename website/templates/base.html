@@ -10,6 +10,13 @@
       right: 20px;
       z-index: 9999;
     }
+    /* Set the position of the overlay box */
+    .overlay-box-2 {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
 
     /* Position the output box above the input text box */
     .output-box {
@@ -25,6 +32,16 @@
 
     /* Style the input text box */
     .overlay-box input[type="text"] {
+      width: 300px;
+      height: 50px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    /* Style the input text box */
+    .overlay-box-2 input[type="text"] {
       width: 300px;
       height: 50px;
       padding: 10px;
@@ -55,10 +72,16 @@
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>
+    <div class="overlay-box-2">
+      <form method="POST">
+          <input type="text" name="input" id="input" placeholder="Enter your text here">
+          <button type="submit">input</button>
+      </form>
+    </div>
     <div class="overlay-box">
         <form method="POST">
             <input type="text" name="text" id="text" placeholder="Enter your text here">
-            <button type="submit">Add Note</button>
+            <button type="submit">Ask</button>
         </form>
     </div>
     <div class="output-box">

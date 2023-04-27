@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note, Input, Response
 from . import db
-from .code import ask_ai, delete_temp, check_db
+from .code import ask_ai, delete_temp, check_db, file_choice
 import json
 
 views = Blueprint('views', __name__)
@@ -27,7 +27,8 @@ def home():
             #flash('Please enter some text!', category='error')
     return render_template("hcfa1500.html", user=current_user)
 def user_text():
-    if request.method == 'POST': 
+    if request.method == 'POST':
+        file_choice() 
         #Gets the text from the HTML 
         text = request.form.get('text')
         if text:
