@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note, Input, Response
 from . import db
-from .code import ask_ai, delete_temp, check_db, file_choice
+from .code import ask_ai, delete_temp
 import json
 
 views = Blueprint('views', __name__)
@@ -28,15 +28,16 @@ def home():
     return render_template("hcfa1500.html", user=current_user)
 def user_text():
     if request.method == 'POST':
-        file_choice() 
+        #file_choice()
+        #pull()
         #Gets the text from the HTML 
         text = request.form.get('text')
         if text:
             if len(text)<1:
                 flash('Note is too short!', category='error')
-            elif check_db(text) != None:
-                response = check_db(text)
-                flash(response)
+            # elif check_db(text) != None:
+            #     response = check_db(text)
+            #     flash(response)
             else:
                 if current_user.is_authenticated:
                     new_text = Input(data=text, user_id=current_user.id)  #providing the schema for the note 
