@@ -45,7 +45,7 @@ def construct_index(directory_path):
 
 def ask_ai(text_data, text_id):
     #constructs new index json to use
-    os.environ["OPENAI_API_KEY"] = "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"
+    os.environ["OPENAI_API_KEY"] = ""
     #construct_index(directory_path=r"C:\Users\gabriel.martin\OneDrive - Office Ally Inc\Documents\GetLab\GPT_App\context_data\Outputs")
     save=r"C:\Users\gabriel.martin\OneDrive - Office Ally Inc\Documents\GetLab\GPT_App\index.json"
     index = GPTSimpleVectorIndex.load_from_disk(save_path=save)
